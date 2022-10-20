@@ -1,0 +1,19 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html" data-sly-unwrap>
+    <sly data-sly-call="${template.placeholder @ isEmpty=true, classAppend='cmp-title'}"></sly>
+    <section class="container">
+        <div class="row" data-sly-use.news="com.anf.core.models.NewsModel">
+            <div data-sly-test="${news.description}" class="col-12">
+                <div class="boxed-layout">
+                    <p data-sly-test="${news.title}" class="published-date js-published-date">
+                        <b>Title :</b>${news.title}</p>
+                    <p class="published-date js-published-date">
+                        <b> Author Name :</b> ${news.author} </p>
+                    <img data-sly-test="${news.image}" class="float-left w-50 mr-3 mb-3" src="${news.image}"
+                         alt="image alt">
+                    <p data-sly-test="${news.description}" class="article-description"><b> Description:</b>${news.description
+                        @context='html'}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</sly>
