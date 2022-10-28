@@ -1,0 +1,128 @@
+{
+  "jcr:primaryType": "cq:PageContent",
+  "jcr:createdBy": "admin",
+  "jcr:title": "Page 2",
+  "cq:template": "/conf/anf-code-challenge/settings/wcm/templates/page-content",
+  "jcr:created": "Tue Oct 11 2022 19:32:37 GMT-0700",
+  "cq:lastModified": "Wed Oct 19 2022 19:36:02 GMT-0700",
+  "pageCreated": true,
+  "anfCodeChallenge": true,
+  "sling:resourceType": "anf-code-challenge/components/page",
+  "cq:lastModifiedBy": "admin",
+  "root": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "anf-code-challenge/components/container",
+    "container": {
+      "jcr:primaryType": "nt:unstructured",
+      "sling:resourceType": "anf-code-challenge/components/container",
+      "title": {
+        "jcr:primaryType": "nt:unstructured",
+        "sling:resourceType": "anf-code-challenge/components/title"
+      },
+      "container": {
+        "jcr:primaryType": "nt:unstructured",
+        "pageCreated": true,
+        "sling:resourceType": "anf-code-challenge/components/container",
+        "news": {
+          "jcr:primaryType": "nt:unstructured",
+          "jcr:createdBy": "admin",
+          "jcr:lastModifiedBy": "admin",
+          "jcr:created": "Wed Oct 19 2022 19:36:02 GMT-0700",
+          "pageCreated": true,
+          "jcr:lastModified": "Wed Oct 19 2022 19:36:02 GMT-0700",
+          "sling:resourceType": "anf-code-challenge/components/news"
+        },
+        "news_0": {
+          "jcr:primaryType": "nt:unstructured",
+          "description": "BBC Sport looks at the big talking points from UFC 273 as Alexander Volkanovski beats the 'Korean Zombie' Chan Sung Jung to retain his featherweight title.",
+          "author": "Caroline Fox",
+          "pageCreated": true,
+          "image": "https://ichef.bbci.co.uk/live-experience/cps/624/cpsprodpb/B536/production/_124109364_gettyimages-1390585815.jpg",
+          "title": "UFC 273: Five things we learned as Alexander Volkanovski dominates 'Korean Zombie'",
+          "sling:resourceType": "anf-code-challenge/components/news"
+        },
+        "news_1": {
+          "jcr:primaryType": "nt:unstructured",
+          "description": "The nation’s founding fathers hunted foxes for sport. This week, a rabid fox that bit nine people near the U.S. Capitol led to a very different type of hunt.",
+          "author": "Leah Askarinam",
+          "pageCreated": true,
+          "image": "https://static01.nyt.com/images/2022/04/06/us/politics/-06onpolitics-pm-newsletter-fox/-06onpolitics-pm-newsletter-fox-facebookJumbo-v2.jpg",
+          "title": "Foxes and D.C. Politicians Don’t Mix, As This Week and History Show",
+          "sling:resourceType": "anf-code-challenge/components/news"
+        },
+        "news_2": {
+          "jcr:primaryType": "nt:unstructured",
+          "description": "<ul><li>UK Sport says it is up to individual sports to decide eligibility</li><li>Chief executive praises ‘incredible resilience’ of cyclist</li></ul>UK Sport says it will support transgender cyclist Emily Bridges with lottery funding in the build up to the P…",
+          "author": "Sean Ingle",
+          "pageCreated": true,
+          "image": "https://i.guim.co.uk/img/media/332590e057078f32f250e4c5765d10bea2a48fcd/62_413_1038_623/master/1038.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=f187ac31adfbb96f31293f8986ef5c0e",
+          "title": "Transgender cyclist Emily Bridges set for lottery funding if allowed to compete",
+          "sling:resourceType": "anf-code-challenge/components/news"
+        },
+        "news_3": {
+          "jcr:primaryType": "nt:unstructured",
+          "description": "Japan's double Olympic speed skating champion Nana Takagi announced her retirement from the sport on Tuesday.",
+          "author": "Samuel",
+          "pageCreated": true,
+          "image": "https://www.reuters.com/resizer/bC2GHTDslLAikPy9rINUC8Rs86Q=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/FFVUH2PSC5LP3P7ZC2SQXLOYH4.jpg",
+          "title": "Japan's double Olympic champion Takagi retires - Reuters.com",
+          "sling:resourceType": "anf-code-challenge/components/news"
+        },
+        "news_4": {
+          "jcr:primaryType": "nt:unstructured",
+          "description": "Amazon today has introduced a new batch of all-time low prices on the Apple Watch Series 7, starting as low as $329.99 for the 41mm GPS models. These sales reach up to $69 off, and in every model listed below you'll find record low discounts. Below we focus o…",
+          "author": "Mitchel Broussard",
+          "pageCreated": true,
+          "image": "https://images.macrumors.com/t/Na1KT6ZUZ402z20lx-3rQR8aoh0=/1600x/article-new/2022/01/Apple-Watch-Series-7-Rainbow-Cropped-Blue-Discount.jpg",
+          "title": "Deals: New Record Low Prices Hit Apple Watch Series 7, Starting at $329.99",
+          "sling:resourceType": "anf-code-challenge/components/news"
+        },
+        "news_5": {
+          "jcr:primaryType": "nt:unstructured",
+          "description": "If you’ve seen golf shoes on the street, it is because one of the world’s most conservative sports has been getting a fresh look thanks to streetwear and sneaker culture.",
+          "author": "Gerald Flores",
+          "pageCreated": true,
+          "image": "https://static01.nyt.com/images/2022/04/10/sports/10masters-sneakers-1/merlin_205040073_61cb1c2c-c550-4f1f-9351-58b65010fa80-facebookJumbo.jpg",
+          "title": "Golf Shoes Are Getting a Makeover Thanks to Streetwear and Sneaker Culture",
+          "sling:resourceType": "anf-code-challenge/components/news"
+        },
+        "news_6": {
+          "jcr:primaryType": "nt:unstructured",
+          "description": "Move over Bing Dwen Dwen and make room for the Masters Gallery Guard Garden Gnome who has taken over the crown as most coveted sport merchandise.",
+          "author": "Lucy Ratcliffe",
+          "pageCreated": true,
+          "image": "https://www.reuters.com/resizer/SZqQsPDNcfQCMwP5hRO29PvnYhM=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/NQUBFBPJMBMLBIQQAGOTEUWZFE.jpg",
+          "title": "Gnome contest as Masters Gallery Guard takes on Bing Dwen Dwen - Reuters.com",
+          "sling:resourceType": "anf-code-challenge/components/news"
+        },
+        "news_7": {
+          "jcr:primaryType": "nt:unstructured",
+          "description": "A new rumor points to a \"Pro\" variant of the Galaxy Watch 5 launching later this year. It may sport a 60% larger battery than its predecessors.",
+          "author": "Derrek Lee",
+          "pageCreated": true,
+          "image": "https://cdn.mos.cms.futurecdn.net/JdwcbFY7wqutddqW62mwAB-1200-80.jpg",
+          "title": "A rumored Galaxy Watch 5 'Pro' could arrive with a massive battery upgrade",
+          "sling:resourceType": "anf-code-challenge/components/news"
+        },
+        "news_8": {
+          "jcr:primaryType": "nt:unstructured",
+          "description": "The Court of Arbitration for Sport (CAS) on Tuesday said the Football Union of Russia (FUR) had withdrawn its appeal against soccer's world governing body FIFA as well as the Polish, Swedish and Czech Republic Football Associations.",
+          "author": "Brandon Heal",
+          "pageCreated": true,
+          "image": "https://www.reuters.com/resizer/RB0GvDyxOxd1KgZJ6V9qQs_ff1w=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/4OM2YJSKAZLSVLYUJQHNHUPERE.jpg",
+          "title": "Football Union of Russia withdraws appeal over FIFA ban - Reuters.com",
+          "sling:resourceType": "anf-code-challenge/components/news"
+        },
+        "news_9": {
+          "jcr:primaryType": "nt:unstructured",
+          "description": "Former world number five Jo-Wilfried Tsonga will play his final tournament at next month's French Open, he said on Wednesday, announcing his decision to bow out of the sport at his home Grand Slam.",
+          "author": "Anna Mikhaleva",
+          "pageCreated": true,
+          "image": "https://www.reuters.com/resizer/ZQ4DjXGtc05Wju_N94IiCdzgXjc=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/MC42JMT3G5LOHBXI5CHORFE244.jpg",
+          "title": "France's Tsonga to retire after Roland Garros - Reuters.com",
+          "sling:resourceType": "anf-code-challenge/components/news"
+        }
+      }
+    }
+  }
+}

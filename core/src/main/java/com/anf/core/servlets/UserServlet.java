@@ -31,15 +31,18 @@ import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.jcr.Node;
+import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import java.io.IOException;
 
 /**
- * Exercise 1: Test Form / Servlet - Keshav
- *
+ * Exercise - 1 ## Keshav ##
+ * Servlet to get the forms values and processing the response after executing the age logic
  */
+
 @Component(service = Servlet.class, immediate = true, property = { "description=User Servlet",
         ServletResolverConstants.SLING_SERVLET_METHODS + "="
                 + HttpConstants.METHOD_POST,
@@ -49,6 +52,7 @@ public class UserServlet extends SlingAllMethodsServlet {
     private static final long serialVersionUID = 1L;
     private static Logger log = LoggerFactory.getLogger(UserServlet.class);
     private static final String RESOURCE_PATH= "/etc/age";
+    private static final String SAVING_NODE_RESOURCE_PATH= "/var/anf-code-challenge";
     private Session session;
 
     @Reference
@@ -56,17 +60,40 @@ public class UserServlet extends SlingAllMethodsServlet {
 
     @Override
     protected void doPost(@NotNull SlingHttpServletRequest req, @NotNull SlingHttpServletResponse res) throws ServletException, IOException {
-        log.info(" *** inside Post method() *** ");
         ResourceResolver resourceResolver = req.getResourceResolver();
+        Session session = resourceResolver.adaptTo(Session.class);
         session = resourceResolver.adaptTo(Session.class);
         String firstName = req.getRequestParameter("fname").getString();
         String lastName = req.getRequestParameter("lname").getString();
-        String age = req.getRequestParameter("age").getString();
+        int age = Integer.parseInt(String.valueOf(req.getRequestParameter("age")));
         Resource resource =  resourceResolver.getResource(RESOURCE_PATH);
+        Resource targetRes = resourceResolver.getResource(SAVING_NODE_RESOURCE_PATH);
         if(null != resource){
-            String minAge = resource.getValueMap().get("minAge", String.class);
-            String maxAge = resource.getValueMap().get("maxAge", String.class);
+            int minAge = Integer.parseInt(resource.getValueMap().get("minAge", String.class));
+            int maxAge = Integer.parseInt(resource.getValueMap().get("maxAge", String.class));
+            if(age >= minAge && age <= maxAge){
+                log.info(" *** Valid Age ***");
+                if(null != targetRes){
+                    Node node = targetRes.adaptTo(Node.class);
+                    try {
+                        log.info(" *** Saving the node *** "+node.getName());
+                        node.setProperty("firstName", firstName);
+                        node.setProperty("lastName",lastName);
+                        node.setProperty("age", age);
+                        session.save();
+                        session.refresh(true);
+                        res.setContentType("text/plain");
+                        res.getWriter().write("You are eligible : user details saved Successfully");
+                    } catch (RepositoryException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            else{
+                res.setContentType("text/plain");
+                res.getWriter().write("You are not eligible");
+            }
+            log.info(" *** Invalid Age ***");
         }
-
     }
 }
