@@ -37,6 +37,18 @@ public class SearchServiceImpl implements SearchService {
     @Reference
     ResourceResolverFactory resourceResolverFactory;
 
+    ResourceResolver resourceResolver;
+
+    SearchResult result;
+
+    Session session;
+
+    Query query;
+
+    JSONArray resultArray;
+
+    JSONObject searchResult;
+
     @Activate
     public void activate(){
         LOG.info("\n ----ACTIVATE METHOD----");
@@ -55,17 +67,17 @@ public class SearchServiceImpl implements SearchService {
     @Override
     public JSONObject searchResult(String propertyName, String propertyValue){
         LOG.info(" ***Begin Code - Keshav *** ");
-        JSONObject searchResult=new JSONObject();
+        searchResult = new JSONObject();
         try {
-            ResourceResolver resourceResolver = ResolverUtil.newResolver(resourceResolverFactory);
+            resourceResolver = ResolverUtil.newResolver(resourceResolverFactory);
             LOG.info(" *** Resource Resolver *** "+resourceResolver.getUserID());
-            final Session session = resourceResolver.adaptTo(Session.class);
+            session = resourceResolver.adaptTo(Session.class);
             LOG.info(" *** session *** "+session.getUserID());
-            Query query = queryBuilder.createQuery(PredicateGroup.create(createTextSearchQuery(propertyName, propertyValue)), session);
-            SearchResult result = query.getResult();
+            query = queryBuilder.createQuery(PredicateGroup.create(createTextSearchQuery(propertyName, propertyValue)), session);
+            result = query.getResult();
 
             List<Hit> hits =result.getHits();
-            JSONArray resultArray=new JSONArray();
+            resultArray=new JSONArray();
             for(Hit hit: hits){
                 Page page=hit.getResource().adaptTo(Page.class);
                 JSONObject resultObject=new JSONObject();

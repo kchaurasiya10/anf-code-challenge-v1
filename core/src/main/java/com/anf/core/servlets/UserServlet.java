@@ -14,8 +14,6 @@
  *  limitations under the License.
  */
 package com.anf.core.servlets;
-
-import com.anf.core.services.ContentService;
 import com.drew.lang.annotations.NotNull;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
@@ -40,7 +38,7 @@ import java.io.IOException;
 
 /**
  * Exercise - 1 ## Keshav ##
- * Servlet to get the forms values and processing the response after executing the age logic
+ * Servlet to get the forms values and processing the response after executing the logic
  */
 
 @Component(service = Servlet.class, immediate = true, property = { "description=User Servlet",
@@ -51,12 +49,11 @@ public class UserServlet extends SlingAllMethodsServlet {
 
     private static final long serialVersionUID = 1L;
     private static Logger log = LoggerFactory.getLogger(UserServlet.class);
+    /** Age Node path To read min and max age property value  */
     private static final String RESOURCE_PATH= "/etc/age";
+    /**  save the user details on path node after successful validation  */
     private static final String SAVING_NODE_RESOURCE_PATH= "/var/anf-code-challenge";
     private Session session;
-
-    @Reference
-    private ContentService contentService;
 
     @Override
     protected void doPost(@NotNull SlingHttpServletRequest req, @NotNull SlingHttpServletResponse res) throws ServletException, IOException {
@@ -72,18 +69,16 @@ public class UserServlet extends SlingAllMethodsServlet {
             int minAge = Integer.parseInt(resource.getValueMap().get("minAge", String.class));
             int maxAge = Integer.parseInt(resource.getValueMap().get("maxAge", String.class));
             if(age >= minAge && age <= maxAge){
-                log.info(" *** Valid Age ***");
                 if(null != targetRes){
                     Node node = targetRes.adaptTo(Node.class);
                     try {
-                        log.info(" *** Saving the node *** "+node.getName());
                         node.setProperty("firstName", firstName);
                         node.setProperty("lastName",lastName);
                         node.setProperty("age", age);
                         session.save();
                         session.refresh(true);
                         res.setContentType("text/plain");
-                        res.getWriter().write("You are eligible : user details saved Successfully");
+                        res.getWriter().write("You are eligible : User details saved Successfully");
                     } catch (RepositoryException e) {
                         e.printStackTrace();
                     }
@@ -93,7 +88,6 @@ public class UserServlet extends SlingAllMethodsServlet {
                 res.setContentType("text/plain");
                 res.getWriter().write("You are not eligible");
             }
-            log.info(" *** Invalid Age ***");
         }
     }
 }

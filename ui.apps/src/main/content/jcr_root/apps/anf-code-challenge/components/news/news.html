@@ -4,13 +4,13 @@
         <div class="row" data-sly-use.news="com.anf.core.models.NewsModel">
             <div data-sly-test="${news.description}" class="col-12">
                 <div class="boxed-layout">
-                    <p data-sly-test="${news.title}" class="published-date js-published-date">
+                    <p data-sly-test="${news.title}">
                         <b>Title :</b>${news.title}</p>
-                    <p class="published-date js-published-date">
+                    <p>
                         <b> Author Name :</b> ${news.author} </p>
-                    <img data-sly-test="${news.image}" class="float-left w-50 mr-3 mb-3" src="${news.image}"
+                    <img data-sly-test="${news.image}" src="${news.image}"
                          alt="image alt">
-                    <p data-sly-test="${news.description}" class="article-description"><b> Description:</b>${news.description
+                    <p data-sly-test="${news.description}"><b> Description:</b>${news.description
                         @context='html'}</p>
                 </div>
             </div>

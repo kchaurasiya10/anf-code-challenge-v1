@@ -4,6 +4,7 @@ import com.adobe.granite.ui.components.ds.DataSource;
 import com.adobe.granite.ui.components.ds.EmptyDataSource;
 import com.adobe.granite.ui.components.ds.SimpleDataSource;
 import com.adobe.granite.ui.components.ds.ValueMapResource;
+import com.anf.core.constants.Constants;
 import com.day.cq.dam.api.Asset;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
@@ -62,7 +63,7 @@ public class CountryListServlet extends SlingSafeMethodsServlet {
 		List<Resource> fakeResourceList = new ArrayList<Resource>();
 		List<String> countries_list = new ArrayList<String>();
 
-		Resource resource = resourceResolver.getResource("/content/dam/anf-code-challenge/exercise-1/countries.json");
+		Resource resource = resourceResolver.getResource(Constants.COUNTRY_LIST);
 		Asset asset = resource.adaptTo(Asset.class);
 		Resource original = asset.getOriginal();
 		InputStream content = original.adaptTo(InputStream.class);
@@ -73,16 +74,12 @@ public class CountryListServlet extends SlingSafeMethodsServlet {
 		br.readLine().replace("{","");
 		while ((line = br.readLine()) != null) {
 			String res = line.split(":")[0].replace("\"","");
-			countries_list.add(res);
-			sb.append(line);
-		}
-		try {
-			JSONObject jsonObj = new JSONObject(sb.toString());
-		} catch (JSONException e) {
-			e.printStackTrace();
+			if(!line.contains("}")) {
+				countries_list.add(res);
+			}
 		}
 
-		if(artPath.contains("/en/")) {
+		if(null != artPath && artPath.contains(Constants.EN_PAGE_PATH)) {
 			getResourceList(resourceResolver, fakeResourceList, countries_list);
 		}
 

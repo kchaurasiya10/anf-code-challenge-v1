@@ -38,8 +38,10 @@ public class NewsModel {
 
 	private static Logger LOG = LoggerFactory.getLogger(NewsModel.class);
 
+	/** Page Container Node Path  */
 	private static final String COMP_PATH = "/jcr:content/root/container/container";
-	private static final String PARSYS_COMP = "wcm/foundation/components/responsivegrid";
+
+	/** News Node Path to get the Property Values  */
 	private static final String NEWS_COMP_PATH = "anf-code-challenge/components/news";
 
 	@ResourcePath(path="/var/commerce/products/anf-code-challenge/newsData")
@@ -82,25 +84,27 @@ public class NewsModel {
 				Resource compResource = resourceResolver.resolve(currentPagePath + COMP_PATH);
 				session = resourceResolver.adaptTo(Session.class);
 				Iterator<Resource> ItrRes = newsDataRes.listChildren();
-				int i = 0;
-				while (ItrRes.hasNext()) {
-					Resource newsRes = ItrRes.next();
-					String title = newsRes.getValueMap().get("title", String.class);
-					String author = newsRes.getValueMap().get("author", String.class);
-					String description = newsRes.getValueMap().get("description", String.class);
-					String image = newsRes.getValueMap().get("urlImage", String.class);
-					if(null != compResource){
-						Node node  = compResource.adaptTo(Node.class);
-						if(!node.hasNode("news_" + i)) {
-							Node compNode = node.addNode("news_" + i);
-							compNode.setProperty("sling:resourceType", NEWS_COMP_PATH);
-							compNode.setProperty("title", title);
-							compNode.setProperty("author", author);
-							compNode.setProperty("description", description);
-							compNode.setProperty("image", image);
-							i = i + 1;
-							session.save();
-							session.refresh(true);
+				if(null != ItrRes) {
+					int i = 0;
+					while (ItrRes.hasNext()) {
+						Resource newsRes = ItrRes.next();
+						String title = newsRes.getValueMap().get("title", String.class);
+						String author = newsRes.getValueMap().get("author", String.class);
+						String description = newsRes.getValueMap().get("description", String.class);
+						String image = newsRes.getValueMap().get("urlImage", String.class);
+						if (null != compResource) {
+							Node node = compResource.adaptTo(Node.class);
+							if (!node.hasNode("news_" + i)) {
+								Node compNode = node.addNode("news_" + i);
+								compNode.setProperty("sling:resourceType", NEWS_COMP_PATH);
+								compNode.setProperty("title", title);
+								compNode.setProperty("author", author);
+								compNode.setProperty("description", description);
+								compNode.setProperty("image", image);
+								i = i + 1;
+								session.refresh(true);
+								session.save();
+							}
 						}
 					}
 				}
