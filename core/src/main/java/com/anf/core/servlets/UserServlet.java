@@ -63,6 +63,7 @@ public class UserServlet extends SlingAllMethodsServlet {
         String firstName = req.getRequestParameter("fname").getString();
         String lastName = req.getRequestParameter("lname").getString();
         int age = Integer.parseInt(String.valueOf(req.getRequestParameter("age")));
+        String country = req.getRequestParameter("country").getString();
         Resource resource =  resourceResolver.getResource(RESOURCE_PATH);
         Resource targetRes = resourceResolver.getResource(SAVING_NODE_RESOURCE_PATH);
         if(null != resource){
@@ -75,6 +76,7 @@ public class UserServlet extends SlingAllMethodsServlet {
                         node.setProperty("firstName", firstName);
                         node.setProperty("lastName",lastName);
                         node.setProperty("age", age);
+                        node.setProperty("country", country);
                         session.save();
                         session.refresh(true);
                         res.setContentType("text/plain");

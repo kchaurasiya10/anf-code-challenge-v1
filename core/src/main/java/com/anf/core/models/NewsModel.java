@@ -19,6 +19,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.ResourcePath;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -55,20 +56,16 @@ public class NewsModel {
 	@ScriptVariable
 	Page currentPage;
 
-	@Inject
-	@Via("resource")
+	@ValueMapValue
 	private String title;
 
-	@Inject
-	@Via("resource")
+	@ValueMapValue
 	private String author;
 
-	@Inject
-	@Via("resource")
+	@ValueMapValue
 	private String description;
 
-	@Inject
-	@Via("resource")
+	@ValueMapValue
 	private String image;
 
 	@PostConstruct
