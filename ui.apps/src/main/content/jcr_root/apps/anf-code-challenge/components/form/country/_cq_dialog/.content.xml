@@ -31,8 +31,13 @@
                                             <countries
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="name"
                                                 fieldLabel="Countries"
-                                                name="./countries"/>
+                                                name="./countries">
+                                                <datasource
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="anf/countrylist/datasource"/>
+                                            </countries>
                                         </items>
                                     </column>
                                 </items>
